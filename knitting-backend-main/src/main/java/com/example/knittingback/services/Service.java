@@ -23,7 +23,6 @@ public interface Service {
     Image downloadImageService(long id) throws IOException;
 
     List<Item> get_All_Items();
-//    List<Image> getAllImages();
 
     boolean deleteModel(long id);
 

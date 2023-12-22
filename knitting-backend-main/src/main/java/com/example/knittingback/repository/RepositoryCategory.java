@@ -21,6 +21,3 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RepositoryCategory extends JpaRepository<CategoryEntity,Long> {
 
 }
-//    @org.springframework.stereotype.Repository
-//    public interface RepositoryItem extends JpaRepository<ItemEntity,Long> {
-//}
