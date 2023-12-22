@@ -11,6 +11,5 @@ import java.util.Optional;
  */
 @org.springframework.stereotype.Repository
 public interface RepositoryItemEntity extends JpaRepository<ItemEntity, Long> {
-//    Optional<ItemEntity> findTopByName(String name);
     ItemEntity findById (long id);
 }

@@ -60,21 +60,6 @@ public class ServiceImpl implements Service {
         return newItemEntity;
     }
 
-//    @Override
-//    public Item createItem(Item item) {
-//        String convertedPath = item.getImagePath().replace('/', '\\');
-////
-//        ItemEntity itemEntity = ItemEntity.builder()
-//                .name(item.getName())
-//                .description(item.getDescription())
-//                .price(item.getPrice())
-//                .image_ID(repositoryImagePath.findByFilePath(convertedPath))
-////                .id_category(converter.convert(item.getId_category()))
-//                .build();
-////        itemEntity
-//        repositoryItemEntity.save(itemEntity);
-//        return item;
-//    }
 
     @Override
     public Order createOrder(Order order) {
@@ -132,12 +117,6 @@ public class ServiceImpl implements Service {
                 .build();
     }
 
-//    public String downloadImageService(long id) {
-////        ImageEntity findByID=repositoryImagePath.findById(id);
-//        String pathToImageDefault="http://localhost:8080/api/v1/images/";
-//
-//        return pathToImageDefault+id;
-//    }
 
 
     @Override
@@ -170,12 +149,6 @@ public class ServiceImpl implements Service {
                         .build()).toList();
 
 
-//downloadImageService()
-//        ItemEntity temp= categoryEntities.get(0);
-//        pathToImage.append( temp.getImage_ID().getId());
-        //Список CategoryEntity содержит объекты класса CategoryEntity, которые представляют записи в таблице categories в базе данных
-
-        //Список Category содержит объекты класса Category, которые представляют представления этих записей.
         return itemEntities;
     }
 
@@ -199,15 +172,6 @@ public class ServiceImpl implements Service {
         BeanUtils.copyProperties(itemEntityForUpdate, returnItem);
         return returnItem;
     }
-//    @Override
-//    public Item updateItem(long id, Item item) {
-//        ItemEntity itemEntity=repositoryItemEntity.findById(id).get();
-//        itemEntity.setName(item.getName());
-//        itemEntity.setDescription(item.getDescription());
-//        itemEntity.setPrice(item.getPrice());
-//        itemEntity.setImage_ID(uploadImageService());
-//
-//    }
 
     @Override
     public Optional<CategoryEntity> getCategoryEntityByID(long categoryID) {

@@ -27,38 +27,19 @@ import java.util.Map;
 //The @RequestMapping("/api/v1") annotation specifies the base URL for all requests handled by this controller. In this case, the base URL is /api/v1.
 public class Controller {
 
-    //    @Autowired
-    //The @Autowired annotation tells Spring Boot to inject the Service dependency into the Controller class. The Service class is responsible for interacting with the database.
     private final Service service;
 
     public Controller(Service service) {
         this.service = service;
     }
 
-    //The public Controller(Service service) constructor injects the Service dependency into the Controller class.
-//    @PostMapping("/categories")
-//    //The @PostMapping("/categories") annotation specifies that the createCategory() method will handle HTTP POST requests to the /categories URL.
-//    //The public Category createCategory(@RequestBody Category category) method creates a new category and returns it. The @RequestBody annotation tells Spring Boot to bind the JSON data in the request body to the category parameter.
-//    public Category createCategory(@RequestBody Category category) {
-//        return service.createCategory(category);
-//    }
 
     @PostMapping("/items")
     public ItemEntity createItem(@RequestParam MultipartFile image, @RequestParam String price, @RequestParam String name, @RequestParam String description) throws IOException {
-//        System.out.println("success");
-//       return null;
+
         return service.createItem(image, description, price, name);
     }
 
-//    @PostMapping("/fileSystem")
-//    public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile image) throws IOException {
-//        try {
-//            String uploadImageService = service.uploadImageService(image);
-//            return ResponseEntity.status(HttpStatus.OK).body(uploadImageService);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }// what the beans is
 
     @PostMapping("/order")
     public Order createOrder() {
@@ -77,17 +58,11 @@ public class Controller {
     )
     public @ResponseBody ByteArrayResource getImageWithMediaType(@PathVariable("id") long id) throws IOException {
         Image imageData = service.downloadImageService(id);
-//    Path path = Paths.get(getClass().getResource(imageData.getFilePath()).toURI());
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(Path.of(imageData.getFilePath())));
 
         return resource;
     }
 
-
-//    @GetMapping("/categories")
-//    public List<Category> getAllCategories() {
-//        return service.getAllCategories();
-//    }
 
     @GetMapping("/items")
     public List<Item> getAllItems() {
@@ -97,14 +72,9 @@ public class Controller {
     @GetMapping("/items/{id}")
     public ResponseEntity<Item> getItemByID(@PathVariable long id) {
         Item item = service.getItemByID(id);
-      return   ResponseEntity.ok(item);
+        return ResponseEntity.ok(item);
 
     }
-//    @GetMapping("/images")
-//    public List<Image> downloadAllimages() {
-//        return service.getAllImages();
-//
-//    }
 
 
     @DeleteMapping("/items/{id}")
@@ -118,7 +88,7 @@ public class Controller {
 
     @PutMapping("/items/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable long id, @RequestParam MultipartFile image, @RequestParam String price, @RequestParam String name, @RequestParam String description) throws IOException {
-        Item item=service.updateItem(id,name,description,price,image);
+        Item item = service.updateItem(id, name, description, price, image);
         return ResponseEntity.ok(item);
 //        return null;
     }
